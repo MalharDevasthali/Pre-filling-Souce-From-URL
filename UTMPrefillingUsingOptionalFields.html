@@ -1,7 +1,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", function(e) 
 {
-		PreFillingUTM();
+	PreFillingUTM();
 })
 
   function PreFillingUTM()
@@ -9,30 +9,29 @@ document.addEventListener("DOMContentLoaded", function(e)
        var url = window.location.href;
        var inputFields = document.getElementsByClassName("w-input");
        
-	     console.log("full url - ", url);
+	console.log("full url - ", url);
 	     
         var options = url.split("?");
         
         if(!options[1].includes("&"))
         {
-				var source = options[1].split("=");
+	var source = options[1].split("=");
         var source_name = source[1];
         inputFields[2].value = source_name;
         return;
-				}
+	}
 			
- 				var source_utm = options[1].split("&");
-        
+ 	var source_utm = options[1].split("&"); 
         var source = source_utm[0].split("=");
         var source_name = source[1];
         inputFields[2].value = source_name;
         
         var medium = source_utm[1].split("=");
-				var medium_name = medium[1];
-				inputFields[3].value = medium_name;
+	var medium_name = medium[1];
+	inputFields[3].value = medium_name;
 			
         var campaign = source_utm[2].split("=");
-				var campaign_name = campaign[1];
+	var campaign_name = campaign[1];
         inputFields[4].value = campaign_name;
         
 				
