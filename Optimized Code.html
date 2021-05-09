@@ -1,0 +1,27 @@
+function fun()
+{
+ var url = window.location.href;
+ var inputFields = document.getElementsByClassName("w-input");
+
+if(url.includes("?"))
+   {
+    var options = url.split("?");
+
+    if(!options[1].includes("&"))
+     {
+	    var source = options[1].split("=");
+        var source_name = source[1];
+        inputFields[2].value = source_name;
+        return;
+	 }
+
+     var utmFeilds = options[1].split("&");
+     for(var i = 0 ; i <utmFeilds.length; i++)
+         {
+           var singleField = utmFeilds[i].split("=");
+           inputFields[i+2].value = singleField[1];
+           console.log( inputFields[i+2].value);
+
+         }
+   }
+}
