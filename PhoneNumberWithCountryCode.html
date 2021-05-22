@@ -1,0 +1,38 @@
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/intlTelInput.js'></script>
+
+<script id="rendered-js">
+      var phone = $("#phone");
+      var inputFields = document.getElementsByClassName("w-input");
+			
+      phone.intlTelInput
+      ({
+ 		  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js" 
+      });
+        
+      phone.on("change", function () 
+      {
+         console.log("number Changed");
+         setCountryCodeAndNumber();
+     });
+
+     phone.on("countrychange",function () 
+	   {
+  	    console.log("Country Changed");
+				setCountryCodeAndNumber();
+	   });
+     
+     function setCountryCodeAndNumber()
+     {
+		    var countryData =  phone.intlTelInput("getSelectedCountryData");
+        console.log("Country Name -"+countryData.name);
+        console.log("Country Code -"+countryData.dialCode);
+        console.log("Phone Number -"+phone.val());
+       	
+        var numberWithCountryCode ="+"+countryData.dialCode+" "+phone.val();  
+		    console.log(numberWithCountryCode);
+        inputFields[8].value = numberWithCountryCode;
+        console.log(inputFields[8].value);
+		 }
+</script>
